@@ -1,7 +1,5 @@
 package com.snxy.common.util;
 
-import com.github.pagehelper.Page;
-import com.snxy.common.exception.BizException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,7 +25,7 @@ public class PageInfo<T> implements Serializable {
         this.data = new ArrayList<>(0);
     }
 
-    public PageInfo(List<T> data) {
+ /*   public PageInfo(List<T> data) {
         if (data instanceof Page) {
             Page page = (Page) data;
             this.pageNum = page.getPageNum();
@@ -42,7 +40,7 @@ public class PageInfo<T> implements Serializable {
             throw new BizException("不支持的数据类型" + data.getClass().getSimpleName());
         }
     }
-
+*/
     public PageInfo(int pageNum, int pageSize, long total, List<T> data) {
         this.pageNum = pageNum;
         this.pageSize = pageSize;
