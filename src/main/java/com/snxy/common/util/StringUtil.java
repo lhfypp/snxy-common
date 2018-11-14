@@ -63,6 +63,12 @@ public class StringUtil {
 
     private static final Pattern PATTERN_REPLACE_WHITE = Pattern.compile("\\s*|\t|\r|\n");
 
+    /*
+    * 营业执照统一社会信用代码正则表达式
+    * */
+    private static final String REG = "(^(?:(?![IOZSV])[\\dA-Z]){2}\\d{6}(?:(?![IOZSV])[\\dA-Z]){10}$)|(^\\d{15}$)";
+
+    private static final Pattern PATTERN_REG = Pattern.compile(REG);
     @Deprecated
     public static boolean isEmpty(final CharSequence cs) {
         return cs == null || cs.length() == 0;
@@ -259,4 +265,12 @@ public class StringUtil {
         return false;
     }
 
+    //检验是否为营业执照的统一社会信用代码
+    public static boolean isSocialCreditCode(String socialCreditCode){
+        if (StringUtil.isBlank(socialCreditCode)) {
+            return false;
+        }
+        Matcher matcher = PATTERN_REG.matcher(socialCreditCode);
+        return matcher.matches();
+    }
 }
